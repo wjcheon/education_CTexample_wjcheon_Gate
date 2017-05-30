@@ -1,0 +1,5 @@
+0 10 Teflon
+10 20 Water
+20 30 PMMA
+30 40 Iodine
+40 50 Air

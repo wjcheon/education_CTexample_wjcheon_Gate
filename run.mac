@@ -1,0 +1,117 @@
+# Author: Wonjoong Cheon, Eunvin Joo, Kyuseok Kim.
+#
+############################
+# VISUALIZATION PARAMETERS #
+############################
+/control/execute visu.mac
+#/vis/disable
+
+
+#########################
+# SET MATERIAL DATABASE #
+#########################
+#	HandOn #1
+#	Set material database
+#/gate/geometry/setMaterialDatabase ./MaterialDB/GateMaterials.db
+#/gate/geometry/setMaterialDatabase ./MaterialDB/patient-HUmaterials.db
+#/gate/geometry/setMaterialDatabase ./MaterialDB/GateMaterials_modified.db
+
+
+
+#########
+# WORLD #
+#########
+/gate/world/geometry/setXLength 50. cm
+/gate/world/geometry/setYLength 50. cm
+/gate/world/geometry/setZLength 50. cm
+/gate/world/setMaterial Air
+/gate/world/vis/forceWireframe
+/gate/world/vis/setColor white
+
+
+#######################################
+# CT scanner for small animal imaging #
+# 150x200 pixels                      #
+# size of pixels : 0.5x0.5x1.0 mm3    #
+# pixels are made up of silicon       #
+#######################################
+#	HandOn #2
+#	Define detector geometry (CTscannerFast.mac)
+#/control/execute CTScannerFast.mac
+
+###################################
+# phantom in rotation (1 deg/s) : #
+#  * 1 water cylinder             #
+#  * 4 balls                      #
+###################################
+#	HandOn #3
+#	Define phantom geometry (phantom.mac)
+#/control/execute phantom.mac
+
+
+#	HandOn #4
+#	Define options for phantom geometry 
+#/gate/waterCylinder/moves/insert rotation
+#/gate/waterCylinder/rotation/setSpeed 1. deg/s
+#/gate/waterCylinder/rotation/setAxis 0 0 1
+
+
+#	HandsOn #6
+#	Define VoxelPhantoms 
+#/gate/world/daughters/name		  Voxel
+#/gate/world/daughters/insert		  ImageNestedParametrisedVolume
+#/gate/Voxel/geometry/setHUToMaterialFile  MaterialDB/patient-HU2mat.txt
+#/gate/Voxel/geometry/setImage             Phantoms/Realskull-quater_0.mhd
+
+
+#	HandsOn #7
+#	Define Voxelphantoms
+# Voxel phantom
+#/gate/world/daughters/name		  Voxel
+#/gate/world/daughters/insert		  ImageNestedParametrisedVolume
+#/gate/Voxel/geometry/setHUToMaterialFile  MaterialDB/HU2mat_CylindericalPhantom.txt
+#/gate/Voxel/geometry/setImage             Phantoms/CylindericalPhantom_voxel.mhd
+
+
+
+#############
+# DIGITIZER #
+#############
+/control/execute digitizer.mac
+
+
+##############
+# SOURCE GPS #
+##############
+/control/execute ./sources/source.mac
+#/control/execute ./sources/source_140kVp.mac
+
+
+###########
+# PHYSICS #
+###########
+/control/execute physics.mac
+
+
+##########
+# OUTPUT #
+##########
+/control/execute outputFast.mac
+
+#############
+# VERBOSITY #
+#############
+/control/execute verbose.mac
+
+##################
+# INITIALIZATION #
+##################
+/gate/run/initialize
+
+###############
+# ACQUISITION #
+###############
+#	HandsOn #5
+#	Run Monte-carlo simulation
+#/control/execute acquisition.mac
+

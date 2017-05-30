@@ -1,0 +1,13 @@
+#/vis/open OGLSX
+/vis/open OGLI
+/vis/drawVolume
+/vis/scene/add/trajectories
+
+/vis/viewer/set/viewpointThetaPhi 45 45
+
+#/vis/viewer/zoom 13
+/vis/viewer/zoom 5
+
+/vis/viewer/set/style surface    # Should removed for Image visulization
+/vis/scene/endOfEventAction accumulate
+/vis/scene/add/axes
