@@ -25,22 +25,28 @@ Fig.1 Snapshot of this project (beam-on)
 
   
 <img src = https://github.com/wjcheon/education_CTexample_wjcheon_Gate/blob/master/DicomPhantom.png />  
-Fig.1 Snapshot of this project (Dicom phantom)     
+Fig.2 Snapshot of this project (Dicom phantom)     
 
 
 <img src = https://github.com/wjcheon/education_CTexample_wjcheon_Gate/blob/master/CylindericalPhantom_Matlab.png />  
-Fig.1 Snapshot of this project (Matlab designed phantom)     
+Fig.3 Snapshot of this project (Matlab designed phantom)     
 
 
 
   
-  
+.  
+.  
+.  
+.  
+.  
 date: 2017.5.30   
 All rights of this codes reserved to **OpenGate Collaboration** and **wjcheon**, **evjoo**, and **Kyuseok Kim**.    
--Creator  
+[Creator]  
  - Thomas DESCHLER (thomas.deschler@iphc.cnrs.fr)  
  - Nicolas ARBOR (nicolas.arbor@iphc.cnrs.fr)  
--Modification  
+
+  
+[Modificator]  
  - Wonjoong Cheon (wonjoongcheon@gmail.com)  
  - Eunvin Joo (jooeunvin@gmail.com)  
  - Kyuseok Kim (seokkyu502@yonsei.ac.kr)  
