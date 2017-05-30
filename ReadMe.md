@@ -3,7 +3,7 @@ This code is written for education in Yonsei university (2017.06.01)
 
 ### Contents 
 1) Simply CT example  
-2) Cylinderical phantom (PMMA//Teflon,Iodine,Water,Air//Voxelized phantom)  
+2) Cylinderical phantom (PMMA//Teflon,Iodine,Water,Air//)  
 3) Dicom phantom (Realskull phantom)  
 4) Phantom designed Matlab   
 
