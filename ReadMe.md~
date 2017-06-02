@@ -52,7 +52,12 @@ All rights of this codes reserved to **OpenGate Collaboration** and **wjcheon**,
  - Kyuseok Kim (seokkyu502@yonsei.ac.kr)  
 
 If you have any question for this code, please send the e-mail to me.  
-     
+  
+  
+Attached materials  
+1) Presentation material (GATE_seminar_20170601_wjcheon.pdf)  
+2) Install guide GPU-GATE (InstallGateV7.2_wjcheon.run)  
+  
   
   
   
