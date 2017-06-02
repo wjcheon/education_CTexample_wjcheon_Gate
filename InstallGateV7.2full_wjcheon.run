@@ -1,0 +1,232 @@
+
+
+## Set install directory 
+export INSTALLDIR=$PWD
+
+## Update apt-get list 
+sudo -s
+sudo apt-get update
+
+
+###############################
+#####  REQUIRED LIBRARY   #####
+###############################
+
+
+sudo apt-get install qt4-qmake
+sudo apt-get install libqt4-opengl 
+sudo apt-get install libqt4-opengl-dev 
+sudo apt-get install libqt4-dev
+# sudo apt-get install libqt4-core 
+sudo apt-get install libgl1-mesa-dev 
+sudo apt-get install libglw1-mesa-dev 
+#sudo apt-get install libosmesa   			## It should not be installed for GPU calculation 
+#sudo apt-get install libosmesa-dev	  	## It should not be installed for GPU calculation 
+sudo apt-get install libosmesa-dev6			## It should be installed !! -- wjcheon 
+sudo apt-get install libxpm4 
+sudo apt-get install libxerces-c3-dev
+sudo apt-get install libxerces-c-dev
+sudo apt-get install libxerces-c3.1 
+sudo apt-get install build-essential 
+sudo apt-get install autoconf 
+sudo apt-get install automake 
+sudo apt-get install tcl
+sudo apt-get install tk
+sudo apt-get install libglu1-mesa-dev
+sudo apt-get install libxt-dev
+sudo apt-get install libxmu-dev
+sudo apt-get install gfortran
+sudo apt-get install libxaw7-dev
+sudo apt-get install libx11*
+sudo apt-get install libx11-dev
+sudo apt-get install libxft-dev
+sudo apt-get install libxpm-dev
+sudo apt-get install libxt-dev
+sudo apt-get install freeglut3
+sudo apt-get install freeglut3-dev
+sudo apt-get install x11proto-print-dev
+# sudo apt-get install libmudflap0*   ## Doesnot exist
+sudo apt-get install po-debconf
+sudo apt-get install libusb-dev
+sudo apt-get install libboost-dev
+sudo apt-get install libtool
+sudo apt-get install libc6-dev
+sudo apt-get install graphviz
+sudo apt-get install graphviz-dev
+sudo apt-get install libxext-dev
+sudo apt-get install libpcre3-dev
+sudo apt-get install libglew-dev
+sudo apt-get install libfftw3-dev
+sudo apt-get install libftgl-dev
+sudo apt-get install libgsl-dev
+sudo apt-get install libgsl2
+sudo apt-get install libkrb5-dev
+sudo apt-get install libssl-dev
+sudo apt-get install libxml2-dev
+sudo apt-get install libldap2-dev
+sudo apt-get install libavahi-compat-libdnssd-dev
+sudo apt-get install libncurses5-dev
+sudo apt-get install libglu1-mesa-dev
+sudo apt-get install libcfitsio3-dev
+sudo apt-get install libmotif-common
+sudo apt-get install libmotif-dev
+sudo apt-get install libxml2
+sudo apt-get install libxml2-dev
+sudo apt-get install libxpm4
+sudo apt-get install libgtkgl2.0-dev
+# sudo apt-get install libgtkglarea-cil-dev
+sudo apt-get install liblablgl-ocaml-dev
+sudo apt-get install liblablgl-ocaml
+sudo apt-get install libxmltooling-dev
+sudo apt-get install happycoders-libsocket-dev
+sudo apt-get install happycoders-libsocket
+sudo apt-get install libvtk6.*
+sudo apt-get install libvtk6-dev
+sudo apt-get install freeglut3-dev
+sudo apt-get install libfftw3-3
+sudo apt-get install libxt-dev
+sudo apt-get install libfftw3-dev
+sudo apt-get install libfftw3-doc
+sudo apt-get install libxmu*
+sudo apt-get install binutils
+sudo apt-get install libxpm-dev
+sudo apt-get install libxft-dev
+sudo apt-get install libxext-dev
+sudo apt-get install dpkg-dev
+# sudo apt-get install nvidia-cuda-dev      ##not
+# sudo apt-get install nvidia-cuda-toolkit  ##not
+
+sudo apt-get install cmake
+sudo apt-get install cmake*
+sudo apt-get install git
+sudo apt-get install make
+sudo apt-get install g++
+sudo apt-get install gcc
+sudo apt install cmake-curses-gui
+
+
+## Install the CUDA 8.0 
+sudo wget -U Mozilla/5.0 http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/cuda-repo-ubuntu1604_8.0.44-1_amd64.deb
+sudo dpkg -i cuda-repo-ubuntu1604_8.0.44-1_amd64.deb
+sudo apt-get update
+sudo apt-get install cuda
+sudo apt-get upgrade
+
+##ROOT
+
+cd 
+
+cd $INSTALLDIR
+
+sudo wget -U Mozilla/5.0 root.cern.ch/download/root_v5.34.36.source.tar.gz
+
+tar -zxvf root_v5.34.36.source.tar.gz
+
+cd $INSTALLDIR/root
+
+./configure linuxx8664gcc
+
+make -j2
+
+source $INSTALLDIR/root/bin/thisroot.sh
+
+
+#Geant4
+
+cd $INSTALLDIR
+
+mkdir -p geant4
+
+cd $INSTALLDIR/geant4
+
+sudo wget -U Mozilla/5.0 http://geant4.cern.ch/support/source/geant4.10.02.p03.tar.gz
+
+tar -zxvf geant4.10.02.p03.tar.gz
+
+mkdir -p geant4.10.02.p03-build
+
+mkdir -p geant4.10.02.p03-install
+
+cd $INSTALLDIR/geant4/geant4.10.02.p03-build
+
+cmake ../geant4.10.02.p03 -DCMAKE_INSTALL_PREFIX=$INSTALLDIR/geant4/geant4.10.02.p03-install -DGEANT4_USE_OPENGL_X11=ON -DGEANT4_USE_QT=ON -DGEANT4_INSTALL_DATA=ON 
+
+make -j2 && make install
+
+source $INSTALLDIR/geant4/geant4.10.02.p03-install/bin/geant4.sh
+export G4HOME=$INSTALLDIR/geant4/geant4.10.02.p03-install
+
+export G4NEUTRONHPDATA=$INSTALLDIR/geant4/geant4.10.02.p03-install/share/Geant4-10.2.3/data/G4NDL4.5
+export G4LEDATA=$INSTALLDIR/geant4/geant4.10.02.p03-install/share/Geant4-10.2.3/data/G4EMLOW6.41
+export G4LEVELGAMMADATA=$INSTALLDIR/geant4/geant4.10.02.p03-install/share/Geant4-10.2.3/data/PhotonEvaporation3.1
+export G4RADIOACTIVEDATA=$INSTALLDIR/geant4/geant4.10.02.p03-install/share/Geant4-10.2.3/data/RadioactiveDecay4.2
+export G4SAIDXSDATA=$INSTALLDIR/geant4/geant4/geant4.10.02.p03-install/share/Geant4-10.2.3/data/G4SAIDATA1.1
+export G4NEUTRONXSDATA=$INSTALLDIR/geant4/geant4.10.02.p03-install/share/Geant4-10.2.3/data/G4NEUTRONXS1.4
+export G4NEUTRONXSDATA=$INSTALLDIR/geant4/geant4.10.02.p03-install/share/Geant4-10.2.3/data/G4ABLA3.0
+export G4PIIDATA=$INSTALLDIR/geant4/geant4/geant4.10.02.p03-install/share/Geant4-10.2.3/data/G4PII1.3
+export G4REALSURFACEDATA=$INSTALLDIR/geant4/geant4.10.02.p03-install/share/Geant4-10.2.3/data/RealSurface1.0
+export G4NEUTRONXSDATA=$INSTALLDIR/geant4/geant4.10.02.p03-install/share/Geant4-10.2.3/data/G4ENSDFSTATE1.0
+
+
+#gate_v7.2
+
+cd $INSTALLDIR
+
+mkdir -p gate
+
+cd $INSTALLDIR/gate
+
+sudo wget -U Mozilla/5.0 http://www.opengatecollaboration.org/sites/default/files/gate_v7.2.tar.gz
+
+tar -zxvf gate_v7.2.tar.gz
+
+mkdir -p gate_v7.2-build
+
+mkdir -p gate_v7.2-install
+
+cd $INSTALLDIR/gate/gate_v7.2-build
+
+## Before CMAKE
+## SDK_DIR=/usr/local
+## It is right -- wjcheon 
+##
+## libxmesa is libosmesa
+## /usr/lib/x86_64-linux-gnu/libOSMesa.so
+## It shouble empty -- wjcheon
+
+cmake ../gate_v7.2 -DCMAKE_INSTALL_PREFIX=$INSTALLDIR/gate/gate_v7.2-install -DGeant4_DIR=$INSTALLDIR/geant4/geant4.10.02.p03-install/lib/Geant4-10.2.3 -DGATE_DOWNLOAD_BENCHMARKS_DATA=ON -DGATE_USE_GPU=ON
+
+make -j2 && make install
+
+
+cd $INSTALLDIR
+cat > setup.sh <<EOF
+
+###(To parakatw ginetai oooolo copy-paste)###
+
+export INSTALLDIR=$PWD
+
+#ROOT
+source \$INSTALLDIR/root/bin/thisroot.sh
+
+#GEANT4
+source \$INSTALLDIR/geant4/geant4.10.02.p03-install/bin/geant4.sh
+export G4HOME=\$INSTALLDIR/geant4/geant4.10.02.p03-install
+
+export G4NEUTRONHPDATA=$INSTALLDIR/geant4/geant4.10.02.p03-install/share/Geant4-10.2.3/data/G4NDL4.5
+export G4LEDATA=$INSTALLDIR/geant4/geant4.10.02.p03-install/share/Geant4-10.2.3/data/G4EMLOW6.48
+export G4LEVELGAMMADATA=$INSTALLDIR/geant4/geant4.10.02.p03-install/share/Geant4-10.2.3/data/PhotonEvaporation3.2
+export G4RADIOACTIVEDATA=$INSTALLDIR/geant4/geant4.10.02.p03-install/share/Geant4-10.2.3/data/RadioactiveDecay4.3.2
+export G4SAIDXSDATA=$INSTALLDIR/geant4/geant4.10.02.p03-install/share/Geant4-10.2.3/data/G4SAIDATA1.1
+export G4NEUTRONXSDATA=$INSTALLDIR/geant4/geant4.10.01-install/share/Geant4-10.1.0/data/G4NEUTRONXS1.4
+export G4PIIDATA=$INSTALLDIR/geant4/geant4.10.02.p03-install/share/Geant4-10.2.3/data/G4ABLA3.0
+export G4PIIDATA=$INSTALLDIR/geant4/geant4.10.02.p03-install/share/Geant4-10.2.3/data/G4PII1.3
+export G4REALSURFACEDATA=$INSTALLDIR/geant4/geant4.10.02.p03-install/share/Geant4-10.2.3/data/RealSurface1.0
+export G4REALSURFACEDATA=$INSTALLDIR/geant4/geant4.10.02.p03-install/share/Geant4-10.2.3/data/G4ENSDFSTATE1.2.3
+
+#GATE
+export PATH=$PATH:$INSTALLDIR/gate/gate_v7.2-install/bin
+
+EOF
+
+
