@@ -2,12 +2,12 @@
 This code is written for education in Yonsei university (2017.06.01)
 
 ### Contents 
-1) Simply CT example  
-2) Cylinderical phantom (PMMA//Teflon,Iodine,Water,Air//Voxelized phantom)  
+1) Simple example of computed tomography (CT)    
+2) Cylinderical phantom (PMMA//Teflon,Iodine,Water,Air//)  
 3) Dicom phantom (Realskull phantom)  
 4) Phantom designed Matlab   
 
-### Source   
+### Sources   
 1) 40kVp spectrum source (built-in)  
 2) 70kVp spectrum source   
 3) 80kVp spectrum source   
@@ -15,11 +15,11 @@ This code is written for education in Yonsei university (2017.06.01)
 5) 120kVp spectrum source   
 6) 140kVp spectrum source   
 
-### Scoring    
+### Scoring method    
 1) CT projection image (*.raw)
 
          
-### Figure    
+### Figures    
 <img src = https://github.com/wjcheon/education_CTexample_wjcheon_Gate/blob/master/BeamOn.png />  
 Fig.1 Snapshot of this project (beam-on)     
 
